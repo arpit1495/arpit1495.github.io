@@ -61,7 +61,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50rem;
+  height: 35rem;
   background: url("../photos/home.jpg") center center no-repeat;
   background-size: cover;
   color: #ffb78c;
