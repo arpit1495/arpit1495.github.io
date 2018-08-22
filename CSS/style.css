@@ -62,7 +62,7 @@ html {
   justify-content: center;
   align-items: center;
   height: 50rem;
-  background: url("https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-6/project-morocco/banner.jpg") center center no-repeat;
+  background: url("../photos/home.jpg") center center no-repeat;
   background-size: cover;
   color: #ffb78c;
 }
