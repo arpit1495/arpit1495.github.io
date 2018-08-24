@@ -1,0 +1,53 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/*Header*/
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 4.4rem;
+  padding-left:3%;
+  padding-right: 0; 
+  background-color: #3587A4;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
+  font-family: 'Oxygen', sans-serif;
+  font-size: .77rem;
+  font-weight: bold;
+}
+
+.header .logo {
+  flex-grow: 1;
+  color: #FFF;
+  font-size: xx-large;
+}
+
+.header li {
+  display: inline;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 20px 18px 10px 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.header li a {
+  text-decoration: none;
+  color: #4a4a4a;
+}
+
+.header li a:hover {
+	background-color: #247e9e;
+}
+
+.active {
+  text-decoration: underline;
+}
+

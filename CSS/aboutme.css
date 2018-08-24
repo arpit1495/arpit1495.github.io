@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.container h2{
+    padding-top: 1.11rem;
+    font-size: 7rem;
+    font-weight: 600;
+}
+.container p{
+    padding-top: 1.11rem;
+    font-size: 3rem;
+}

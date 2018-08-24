@@ -1,31 +1,42 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
 <head>
-  <title>Contact Me</title>
-  <link rel="stylesheet" type="text/css" href="CSS/reset.css">
-  <link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<title>Contact</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="CSS/contactme.css">
 </head>
 <body>
-  <!-- Header -->
-  <nav class="header">
-    <span class="logo">Contact</span>
-    <ul>
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="./aboutme.html">About Me</a></li>
-      <li><a href="./contactme.html">Contact</a></li>
-      <li><a href="photos.html">Gallery</a></li>
-    </ul>
-  </nav>
-
-  <!-- Banner -->
-  <div class="banner">
-    <h2>I'm</h2>
-    <h1>Arpit</h1>
+	<!-- Header -->
+	  <nav class="header">
+	    <span class="logo">Contact</span>
+	    <ul>
+	      <li><a href="./index.html">Home</a></li>
+	      <li><a href="./aboutme.html">About Me</a></li>
+	      <li class="active"><a href="./contactme.html">Contact</a></li>
+	      <li><a href="photos.html">Gallery</a></li>
+	    </ul>
+	  </nav>
+	<!-- Container -->
+	<div class="container">
+	  <div style="text-align:center">
+	    <h2>Let's Get In Touch</h2>
+	    <p>Leave me a message:</p>
+	  </div>
+	  <div align= "center" class="row">
+	    <div class="column">
+	      <form action="/action_page.php">
+	        <label for="fname">First Name</label>
+	        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+	        <label for="lname">Last Name</label>
+	        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+	        <label for="email">E-mail</label>
+	        <input type="text" id="email" name="E-mail" placeholder="Your e-mail..">
+	        <label for="message">Message</label>
+	        <textarea id="message" name="message" placeholder="Write something.."></textarea>
+	        <input type="submit" value="Submit">
+      		</form>
+    	</div>
   </div>
-
- <!-- Footer -->
-  <footer>
-    
-  </footer>
+	</div>
 </body>
 </html>
