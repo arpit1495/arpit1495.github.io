@@ -1,0 +1,142 @@
+
+ 
+
+.column {
+  align-content: center;
+  position:relative;
+  padding:0px;
+  padding-bottom: 0px;
+  padding-right: 3px;
+  padding-left:3px;
+ 
+}
+
+ .column img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+
+}
+
+
+.row:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.row {
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-auto-rows: 300px;
+
+}
+/* Add a background color and some padding around the form */
+.form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 25px;
+    width: 40%;
+    margin:20px auto;
+}
+.hideform {
+   display: none;
+   position:fixed;
+   background-color:#f2f2f2;
+   width:40%;
+   top:150px;
+   left:300px;
+   padding:30px;
+   border-radius: 5px;
+   z-index: 1;
+   overflow: visible;
+}
+.model{
+	 display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.btn-group button {
+	align-self: center;
+	align-content: center;
+	text-align: center;
+	position: static;
+  background-color: #4CAF50; 
+  border-radius: 5px;
+  color: white; 
+  padding: 10px; 
+  cursor: pointer; 
+  width: 15%; 
+  font-size: 20px;
+  margin-bottom: 20px;
+  border:0px;
+  top:68px;
+  left:578px;
+}
+
+
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: #32753B;
+}
+
+
+.fa-trash {
+   top: 4%;
+   left: 83%;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    padding: 6px 6px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 5px;
+}
+
+/* Darker background on mouse-over */
+.fa-trash:hover {
+    background-color: #4CAF50;
+}
+.fa-edit {
+   top: 4%;
+   left: 3%;
+    background-color: transparent;
+    border: none;
+    color: transparent;
+    padding: 6px 6px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0%;
+  }
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 6px; /* Some padding */  
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

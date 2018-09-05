@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Restaurent</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="tables">
+			<header>
+				<h4>Tables</h4>
+			</header>
+			<div class="searchbox">
+				<input align="center" type="text" id="tableSearch" onkeyup="searchTables()" placeholder="Search tables..">
+			</div>
+			<div class="tableContainer">
+				<div class="table" id="table1" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="document.getElementById('id01').style.display='block';openModal1()" style="width:auto;">
+					<h2 class="head">Table-1</h2>
+					<div class="bill">0.00</div>
+					<div class="items">0</div>					
+				</div>
+				<div id="id01" class="modal">
+					  <div class='modal-content'>
+						  <div class="modal-header">
+						  	<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+						    <h2>Table-1 Orders</h2>
+						  </div>
+					    <div class="tablecontainer">
+					      <table>
+					        <thead>
+					          <tr>
+					            <th>Sno</th>
+					            <th>Item</th>
+					            <th>Price</th>
+					            <th>Quantity</th>
+					            <th></th>
+					          </tr>
+					        </thead>
+					        <tbody class="tbody" id="container1">
+					          
+					        </tbody>
+					      </table>
+					    </div>
+    					<span class="psw" onclick="resetTable1()">CLOSE SESSION</span>
+					    
+					  </div>
+					</div>
+
+				<div class="table" id="table2" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="document.getElementById('id02').style.display='block';openModal2()" style="width:auto;">
+					<h2 class="he-ad">Table-2</h2>
+					<div class="bill">0.00</div>
+					<div class="items">0</div>			
+				</div>
+				<div id="id02" class="modal">
+						<div class='modal-content'>
+							<div class="modal-header">
+								<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+						    <h2>Table-2 Orders</h2>
+						  </div>
+					    <div class="tablecontainer">
+					      <table>
+					        <thead>
+					          <tr>
+					            <th>Sno</th>
+					            <th>Item</th>
+					            <th>Price</th>
+					            <th>Quantity</th>
+					            <th></th>
+					          </tr>
+					        </thead>
+					        <tbody class="tbody" id="container2">
+					          
+					        </tbody>
+					      </table>
+					    </div>
+    					<span class="psw" onclick="resetTable2()">CLOSE SESSION</span>
+					    
+					  </div>
+					</div>	
+
+				<div class="table" id="table3" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="document.getElementById('id03').style.display='block';openModal3()" style="width:auto;">
+					<h2 class="head">Table-3</h2>
+					<div class="bill">0.00</div>
+					<div class="items">0</div>
+				</div>
+				<div id="id03" class="modal">
+						<div class='modal-content'>
+							<div class="modal-header">
+								<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+						    <h2>Table-3 Orders</h2>
+							</div>
+					    <div class="tablecontainer">
+					      <table>
+					        <thead>
+					          <tr>
+					            <th>Sno</th>
+					            <th>Item</th>
+					            <th>Price</th>
+					            <th>Quantity</th>
+					            <th></th>
+					          </tr>
+					        </thead>
+					        <tbody class="tbody" id="container3">
+					          
+					        </tbody>
+					      </table>
+					    </div>
+    					<span class="psw" onclick="resetTable3()">CLOSE SESSION</span>
+					    
+					  </div>
+					</div>		
+
+				<div class="table" id="table4" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="document.getElementById('id04').style.display='block';openModal4();" style="width:auto;">
+					<h2 class="head">Table-4</h2>
+					<div class="bill">0.00</div>
+					<div class="items">0</div>
+				</div>
+				<div id="id04" class="modal">
+						<div class='modal-content'>
+							<div class="modal-header">
+								<span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+						    <h2>Table-4 Orders</h2>
+						  </div>
+					    <div class="tablecontainer">
+					      <table>
+					        <thead>
+					          <tr>
+					            <th>Sno</th>
+					            <th>Item</th>
+					            <th>Price</th>
+					            <th>Quantity</th>
+					            <th></th>
+					          </tr>
+					        </thead>
+					        <tbody class="tbody" id="container4">
+					          
+					    		</tbody>
+					      </table>
+					    </div>
+    					
+					   <span class="psw" onclick="resetTable4()">CLOSE SESSION</span>
+
+					  </div>
+					</div>
+			</div>
+		</div>
+		<div class="menu">
+			<header>
+				<h4>Menu</h4>
+			</header>
+			<div class="searchbox">
+				<input align="center" type="text" id="menuSearch" onkeyup="searchMenu()" placeholder="Search menu..">
+			</div>
+
+			<div class="menuContainer">
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food1">
+					<div class="itemName" id="food1item">French Fries </div>
+					
+          <div class="Price" id="food1price">70.00</div>
+        </div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food2">
+					<div class="itemName" id="food2item">Veg Salsa Whopper </div>
+					<div class="Price" id="food2price">199.00</div>
+        </div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food3">
+					<div class="itemName" id="food3item">Veg Salsa Whopper Meal </div>
+					<div class="Price" id="food3price">269.00</div>
+        </div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food4">
+					<div class="itemName" id="food4item">Veg Chilli Cheese Melt </div>
+            		<div class="Price" id="food4price">105.00</div>
+            	</div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food5">
+					<div class="itemName" id="food5item">Veggie </div>
+            		<div class="Price" id="food5price">85.00</div>
+            	</div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food6">
+					<div class="itemName" id="food6item">Veg Surprise </div>
+            		<div class="Price" id="food6price">99.00</div>
+            	</div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food7">
+					<div class="itemName" id="food7item">Crispy Veg </div>
+            		<div class="Price" id="food7price">39.00</div>
+            	</div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food8">
+					<div class="itemName" id="food8item">Fiery Rings </div>
+            		<div class="Price" id="food8price">29.00</div>
+            	</div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food9">
+					<div class="itemName" id="food9item">Veggie Strips  </div>
+            		<div class="Price" id="food9price">29.00</div>
+            	</div>			
+				
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food10">
+					<div class="itemName" id="food10item">Veg Panneer King </div>
+            		<div class="Price" id="food10price">125.00</div>
+            	</div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food11">
+					<div class="itemName" id="food11item">Pepsi </div>
+            		<div class="Price" id="food11price">57.00</div>
+            	</div>
+
+				<div ondragstart="drag(event)" draggable="true" class="food" id="food12">
+					<div class="itemName" id="food12item">Aquavess </div>
+            		<div class="Price" id="food12price">28.57</div>
+            	</div>
+
+			</div>
+		</div>
+	</div>	
+	<script src="script.js"></script>
+</body>
+</html>

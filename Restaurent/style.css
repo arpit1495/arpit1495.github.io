@@ -1,0 +1,143 @@
+html,body
+{
+	overflow-y: hidden;
+}
+.container{
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-column-gap: 20px;
+
+}
+
+.tables{
+	grid-column: 1 2;
+	height: 100%
+}
+
+
+.menu{
+	grid-column: 2 3;
+	overflow: scroll;
+	height: 100vh;
+
+}
+
+h4{
+	text-align: center;
+}
+
+input[type="text"]{
+	width: 80%;
+}
+
+.menuContainer{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: 150px;
+	grid-row-gap: 5px;
+
+
+
+
+}
+
+.tableContainer{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: 125px;
+	grid-row-gap: 5px;
+
+}
+
+.food, .table{
+	box-shadow: 2px 2px 2px rgba(128,128,128, 0.4);
+}
+
+.food:hover, .table:hover {
+	box-shadow: 5px 5px 5px rgba(128,128,128, 0.5)
+}
+
+[draggable=true] {
+    -webkit-user-drag: element;
+}
+
+
+.table4container {
+    padding: 16px;
+}
+
+.psw {
+    float: right;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+/* The Close Button (x) */
+.close {
+	float: right;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.tablecontainer{
+	display: grid;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+
+td{
+	text-align: center;
+}
+
+.food{
+	padding-top: 3%;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: blue;
+    color: white;
+}
+
