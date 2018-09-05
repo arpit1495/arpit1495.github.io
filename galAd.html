@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Admin</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="CSS/admin.css">
+	</head>
+	<body>
+		<!-- Header -->
+	  <nav class="header">
+	    <span class="logo">Gallery Admin</span>
+	    <ul>
+	      <li><a href="./index.html">Home</a></li>
+	      <li><a href="./aboutme.html">About Me</a></li>
+	      <li><a href="./contactme.html">Contact</a></li>
+	      <li><a href="photos.html">Gallery</a></li>
+	      <li class="active"><a href="./galAd.html">Admin</a></li>
+	    </ul>
+	  </nav>
+	  <!--Grid Container -->
+	  <div class="contianer">
+	  	<div id=gallery>
+	  		<div class="btn-group" id="buttons" align="center">
+        <button id="show" onclick="showPage()">Add Picture</button>
+      </div>
+     		<div id="roow" class="row">
+    
+     		</div>
+      
+     <div class="model" id="model">
+     <div id="gallery_form" class="hideform">
+       <button id="close" style="float: right;" onclick="pageHide()">X</button>
+       <form action="#" id="form_id" onsubmit="return addImage()">
+        Picture URL:<br>
+        <input type="text" name="picture" id="url" required onchange="validateURL(this.id)">
+        <br><br>
+        Name:<br>
+        <input type="text" name="name" id="name" required>
+        <br><br>
+        Info:<br>
+        <input type="text" name="info" id="info" required>
+        <br><br>
+        Date:<br>
+        <input type="date" name="date" id="date" required onchange="validateDate(this.id)">
+        <br><br>
+        <input type="submit" value="Submit">
+       </form>
+      </div>
+
+     
+     <div id="gallery_form1" class="hideform">
+       <button id="close" style="float: right;" onclick="pageHide1()">X</button>
+       <form action="#" id="form_id1">
+        Enter Image Url:<br>
+        <input type="text" name="picture" id="url1" required onchange="url_validation(this.id)">
+        <br><br>
+        Name:<br>
+        <input type="text" name="name" id="name1" required>
+        <br><br>
+        Info:<br>
+        <input type="text" name="info" id="info1" required>
+        <br><br>
+        Date:<br>
+        <input type="date" name="date" id="date1" required >
+        <br><br>
+        <input type="submit" value="Submit">
+       </form>
+      </div>
+  </div>
+</div>
+
+
+	  </div>
+		<script src="scripts/admin.js"></script>
+	</body>
+</html>

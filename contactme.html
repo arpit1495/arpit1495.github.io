@@ -1,9 +1,10 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Contact</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="CSS/contactme.css">
+	<script src="scripts/contact.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -14,6 +15,7 @@
 	      <li><a href="./aboutme.html">About Me</a></li>
 	      <li class="active"><a href="./contactme.html">Contact</a></li>
 	      <li><a href="photos.html">Gallery</a></li>
+	      <li><a href="./galAd.html">Admin</a></li>
 	    </ul>
 	  </nav>
 	<!-- Container -->
@@ -24,13 +26,13 @@
 	  </div>
 	  <div align= "center" class="row">
 	    <div class="column">
-	      <form action="">
+	      <form action="" onsubmit="return checkForm(this);">
 	        <label for="fname">First Name</label>
-	        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+	        <input type="text" id="fname" name="firstname" placeholder="Your name.." >
 	        <label for="lname">Last Name</label>
 	        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 	        <label for="email">E-mail</label>
-	        <input type="text" id="email" name="E-mail" placeholder="Your e-mail..">
+	        <input type="text" id="email" name="email" placeholder="Your e-mail..">
 	        <label for="message">Message</label>
 	        <textarea id="message" name="message" placeholder="Write something.."></textarea>
 	        <input type="submit" value="Submit">
