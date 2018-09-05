@@ -1,4 +1,4 @@
-var table1 = {};
+  var table1 = {};
 var table2 = {};
 var table3 = {};
 var table4 = {};
@@ -6,7 +6,7 @@ var table4 = {};
 //Searching Menu
 function searchMenu() {
     // Declare variables
-    var input, filter, ul, a, i;
+    var input, filter, ul, a, b, i;
     input = document.getElementById('menuSearch');
     filter = input.value.toUpperCase();
     ul = document.getElementsByClassName("food");
@@ -15,7 +15,8 @@ function searchMenu() {
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < ul.length; i++) {
         a = ul[i].getElementsByClassName("itemName")[0];
-        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        b = ul[i].getElementsByClassName("type")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1 || b.innerHTML.toUpperCase().indexOf(filter) > -1) {
             ul[i].style.display = "";
         } else {
             ul[i].style.display = "none";
