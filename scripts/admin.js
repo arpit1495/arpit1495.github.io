@@ -254,7 +254,7 @@ function loadImage(photo){
  * otherwise it will load images locally
  */
 window.onload = function() {
-    if(localStorage.getItem("pictures")==null)
+    if(localStorage.getItem("pictures")==null || localStorage.getItem("pictures")=="[]")
     {
        loadImage(images);
        localStorage.setItem('pictures',JSON.stringify(images));
