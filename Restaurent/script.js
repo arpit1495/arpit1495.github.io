@@ -1,7 +1,17 @@
-  var table1 = {};
-var table2 = {};
-var table3 = {};
-var table4 = {};
+var table1 = {};//keep track of items on table 1
+var table2 = {};//keep track of items on table 2
+var table3 = {};//keep track of items on table 3
+var table4 = {};//keep track of items on table 4
+
+//method to populate tables
+function populateTables(data, table) {
+    //checks if item already in the table, else adds that item
+    if(document.getElementById(data+'item').innerHTML in table){
+        table[document.getElementById(data+'item').innerHTML][0] += 1;
+    }else{
+        table[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
+    }
+}
 
 //Searching Menu
 function searchMenu() {
@@ -10,7 +20,7 @@ function searchMenu() {
     input = document.getElementById('menuSearch');
     filter = input.value.toUpperCase();
     ul = document.getElementsByClassName("food");
-    
+
 
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < ul.length; i++) {
@@ -31,7 +41,7 @@ function searchTables() {
     input = document.getElementById('tableSearch');
     filter = input.value.toUpperCase();
     ul = document.getElementsByClassName("table");
-    
+
 
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < ul.length; i++) {
@@ -59,458 +69,228 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     if(ev.target.className === "table"){
-      ev.target.children[1].innerHTML = Number(ev.target.children[1].innerHTML) + Number(document.getElementById(data+'price').innerHTML);
-      ev.target.children[2].innerHTML = Number(ev.target.children[2].innerHTML) +  1;
-      if(ev.target.id === 'table1'){
-        if(document.getElementById(data+'item').innerHTML in table1){
-          table1[document.getElementById(data+'item').innerHTML][0] += 1;
+        ev.target.children[1].lastChild.innerHTML = Number(ev.target.children[1].lastChild.innerHTML) + Number(document.getElementById(data+'price').innerHTML);
+        ev.target.children[2].firstChild.innerHTML = Number(ev.target.children[2].firstChild.innerHTML) +  1;
+        if(ev.target.id === 'table1'){
+            populateTables(data, table1);
         }
-        else{
-          table1[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-        }
-      }
 
-      if(ev.target.id === 'table2'){
-        if(document.getElementById(data+'item').innerHTML in table2){
-          table2[document.getElementById(data+'item').innerHTML][0] += 1;
+        else if(ev.target.id === 'table2'){
+            populateTables(data, table2);
         }
-        else{
-          table2[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-        }
-      }
 
-      if(ev.target.id === 'table3'){
-        if(document.getElementById(data+'item').innerHTML in table3){
-          table3[document.getElementById(data+'item').innerHTML][0] += 1;
+        else if(ev.target.id === 'table3'){
+            populateTables(data, table3);
         }
-        else{
-          table3[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-        }
-      }
 
-      if(ev.target.id === 'table4'){
-        if(document.getElementById(data+'item').innerHTML in table4){
-          table4[document.getElementById(data+'item').innerHTML][0] += 1;
+        else if(ev.target.id === 'table4'){
+           populateTables(data, table4);
         }
-        else{
-          table4[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-        }
-      }
-      
+
     }
-    
+
     else{
-      if(ev.target.className === "head" || ev.target.className === "bill" || ev.target.className === "items" ){
-        ev.target.parentNode.children[1].innerHTML = Number(ev.target.parentNode.children[1].innerHTML) + Number(document.getElementById(data+'price').innerHTML);
-        ev.target.parentNode.children[2].innerHTML = Number(ev.target.parentNode.children[2].innerHTML) +  1;
+        if(ev.target.className === "head" || ev.target.className === "bill" || ev.target.className === "items" ){
+            ev.target.parentNode.children[1].lastChild.innerHTML = Number(ev.target.parentNode.children[1].lastChild.innerHTML) + Number(document.getElementById(data+'price').innerHTML);
+            ev.target.parentNode.children[2].firstChild.innerHTML = Number(ev.target.parentNode.children[2].firstChild.innerHTML) +  1;
 
-        if(ev.target.parentNode.id === 'table1'){
-          if(document.getElementById(data+'item').innerHTML in table1){
-            table1[document.getElementById(data+'item').innerHTML][0] += 1;
-          }
-          else{
-            table1[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-          }
+            if(ev.target.parentNode.id === 'table1'){
+                populateTables(data, table1);
+            }
+
+            else if(ev.target.parentNode.id === 'table2'){
+                populateTables(data, table2);
+            }
+
+            else if(ev.target.parentNode.id === 'table3'){
+                populateTables(data, table3);
+            }
+
+            else if(ev.target.parentNode.id === 'table4'){
+                populateTables(data, table4);
+            }
         }
+    }
+}
+//Function to open model 1
+function openModal1() {
+    openModal("container1", table1, "table1");
+}
+//Function to open model 2
+function openModal2() {
+    openModal("container2", table2, "table2");
+}
+//Function to open model 3
+function openModal3() {
+    openModal("container3", table3, "table3");
+}
+//Function to open model 4
+function openModal4() {
+    openModal("container4", table4, "table4");
+}
 
-        if(ev.target.parentNode.id === 'table2'){
-          if(document.getElementById(data+'item').innerHTML in table2){
-            table2[document.getElementById(data+'item').innerHTML][0] += 1;
-          }
-          else{
-            table2[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-          }
+//creating bill of given table
+function openModal(container, table, tableID){
+    var target = document.getElementById(container);
+    var total = 0;
+    while (target.firstChild) {
+        target.removeChild(target.firstChild);
+    }
+    if(Object.keys(table).length > 0){
+        for (var i = 0; i < Object.keys(table).length; i++) {
+            var key = Object.keys(table)[i];
+            total += table[key][0]*table[key][1];
+            var row = document.createElement("tr");
+            var sNo = document.createElement("td");
+            var item = document.createElement("td");
+            var price = document.createElement("td");
+            var quant = document.createElement("td");
+            var input = document.createElement("input");
+            var del = document.createElement("td");
+            var delBtn = document.createElement("button");
+
+
+            sNo.className = "modalserial";
+            item.className = "modalItemName";
+            price.className = "modalPrice";
+            quant.className = "modalQuant";
+
+            input.setAttribute("type", "number");
+            input.setAttribute("min", 1);
+            input.setAttribute("onkeypress", "return event.charCode >= 48");
+            if (tableID === "table1"){
+                input.setAttribute("onchange", "editQuant(this, table1, 'table1', openModal1)");
+            }
+            else if (tableID === "table2"){
+                input.setAttribute("onchange", "editQuant(this, table2, 'table2', openModal2)");
+            }
+            else if (tableID === "table3"){
+                input.setAttribute("onchange", "editQuant(this, table3, 'table3', openModal3)");
+            }
+            else{
+                input.setAttribute("onchange", "editQuant(this, table4, 'table4', openModal4)");
+            }
+
+            if (tableID === "table1"){
+                delBtn.setAttribute("onclick", "deleteItem(this, table1, 'table1', openModal1)");
+            }
+            else if (tableID === "table2"){
+                delBtn.setAttribute("onclick", "deleteItem(this, table2, 'table2', openModal2)");
+            }
+            else if (tableID === "table3"){
+                delBtn.setAttribute("onclick", "deleteItem(this, table3, 'table3', openModal3)");
+            }
+            else {
+                delBtn.setAttribute("onclick", "deleteItem(this, table4, 'table4', openModal4)");
+            }
+
+            delBtn.className = "modalDelete";
+
+            delBtn.innerHTML = "del";
+
+            sNo.innerHTML = i + 1;
+            item.innerHTML = key;
+            price.innerHTML = table[key][1];
+            input.value = table[key][0];
+
+            quant.appendChild(input);
+            del.appendChild(delBtn);
+
+
+            row.appendChild(sNo);
+            row.appendChild(item);
+            row.appendChild(price);
+            row.appendChild(quant);
+            row.appendChild(del);
+            target.appendChild(row);
         }
-
-        if(ev.target.parentNode.id === 'table3'){
-          if(document.getElementById(data+'item').innerHTML in table3){
-            table3[document.getElementById(data+'item').innerHTML][0] += 1;
-          }
-          else{
-            table3[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-          }
-        }
-
-        if(ev.target.parentNode.id === 'table4'){
-          if(document.getElementById(data+'item').innerHTML in table4){
-            table4[document.getElementById(data+'item').innerHTML][0] += 1;
-          }
-          else{
-            table4[document.getElementById(data+'item').innerHTML] = [1, Number(document.getElementById(data+'price').innerHTML)];
-          }
-        }
-      }
     }
+    var fRow = document.createElement('tr');
+    var tData = document.createElement('th');
+    var tValue = document.createElement('td');
+    tData.colspan = 2;
+    tValue.colspan = 2;
+    tData.innerHTML = 'Total';
+    tValue.innerHTML = total;
+    fRow.appendChild(tData);
+    fRow.appendChild(tValue);
+    target.appendChild(fRow);
+}
+//resets table 1
+function resetTable1() {
+    table1={};
+    resetTable("table1", "container1", "id01", "Table-1");
+}
+//resets table 2
+function resetTable2() {
+    table2={};
+    resetTable("table2", "container2", "id02", "Table-2");
+}
+//resets table 3
+function resetTable3() {
+    table3={};
+    resetTable("table3", "container3", "id03", "Table-3");
+}
+//resets table 4
+function resetTable4() {
+    table4={};
+    resetTable("table4", "container4", "id04", "Table-4");
 }
 
-//creating bill of table 1
-function openModal1(){
-  var target = document.getElementById('container1');
-  var total = 0;
-  while (target.firstChild) {
-          target.removeChild(target.firstChild);
-  }
-  if(Object.keys(table1).length > 0){
-    for (var i = 0; i < Object.keys(table1).length; i++) {
-      var key = Object.keys(table1)[i];
-      total += table1[key][0]*table1[key][1];
-      var row = document.createElement("tr");
-      var sNo = document.createElement("td");
-      var item = document.createElement("td");
-      var price = document.createElement("td");
-      var quant = document.createElement("td");
-      var input = document.createElement("input");
-      var del = document.createElement("td");
-      var delBtn = document.createElement("button");
-
-
-      sNo.className = "modalserial";
-      item.className = "modalItemName";
-      price.className = "modalPrice";
-      quant.className = "modalQuant";
-
-      input.setAttribute("type", "number");
-      input.setAttribute("min", 1);
-      input.setAttribute("onkeypress", "return event.charCode >= 48");
-      input.setAttribute("onchange", "editQuant(this, table1, 'table1', openModal1)");
-
-
-      delBtn.setAttribute("onclick", "deleteItem(this, table1, 'table1', openModal1)");
-      delBtn.className = "modalDelete";
-
-      delBtn.innerHTML = "del";
-
-      sNo.innerHTML = i + 1;
-      item.innerHTML = key;
-      price.innerHTML = table1[key][1];
-      input.value = table1[key][0];
-
-      quant.appendChild(input);
-      del.appendChild(delBtn);
-
-
-      row.appendChild(sNo);
-      row.appendChild(item);
-      row.appendChild(price);
-      row.appendChild(quant);
-      row.appendChild(del);
-      target.appendChild(row);
+//Closes the session of tables
+function resetTable(tableId, container, modalId, str){
+    var table = document.getElementById(tableId);
+    var modal = document.getElementById(container);
+    var total = modal.lastChild.lastChild.innerHTML;
+    while (modal.firstChild) {
+        modal.removeChild(modal.firstChild);
     }
-  }
-  var fRow = document.createElement('tr');
-  var tData = document.createElement('th');
-  var tValue = document.createElement('td');
-  tData.colspan = 2;
-  tValue.colspan = 2;
-  tData.innerHTML = 'Total';
-  tValue.innerHTML = total;
-  fRow.appendChild(tData);
-  fRow.appendChild(tValue);
-  target.appendChild(fRow);
-}
-
-//creating bill of table 2
-function openModal2(){
-  var target = document.getElementById('container2');
-  var total = 0;
-  while (target.firstChild) {
-          target.removeChild(target.firstChild);
-  }
-  if(Object.keys(table2).length > 0){
-    for (var i = 0; i < Object.keys(table2).length; i++) {
-      var key = Object.keys(table2)[i];
-      total += table2[key][0]*table2[key][1];
-      var row = document.createElement("tr");
-      var sNo = document.createElement("td");
-      var item = document.createElement("td");
-      var price = document.createElement("td");
-      var quant = document.createElement("td");
-      var input = document.createElement("input");
-      var del = document.createElement("td");
-      var delBtn = document.createElement("button");
-
-
-      sNo.className = "modalserial";
-      item.className = "modalItemName";
-      price.className = "modalPrice";
-      quant.className = "modalQuant";
-
-      input.setAttribute("type", "number");
-      input.setAttribute("min", 1);
-      input.setAttribute("onkeypress", "return event.charCode >= 48");
-      input.setAttribute("onchange", "editQuant(this, table2, 'table2', openModal2)");
-
-
-      delBtn.setAttribute("onclick", "deleteItem(this, table2, 'table2', openModal2)");
-      delBtn.className = "modalDelete";
-
-      delBtn.innerHTML = "del";
-
-      sNo.innerHTML = i + 1;
-      item.innerHTML = key;
-      price.innerHTML = table2[key][1];
-      input.value = table2[key][0];
-
-      quant.appendChild(input);
-      del.appendChild(delBtn);
-
-
-      row.appendChild(sNo);
-      row.appendChild(item);
-      row.appendChild(price);
-      row.appendChild(quant);
-      row.appendChild(del);
-      target.appendChild(row);
-    }
-  }
-  var fRow = document.createElement('tr');
-  var tData = document.createElement('th');
-  var tValue = document.createElement('td');
-  tData.colspan = 2;
-  tValue.colspan = 2;
-  tData.innerHTML = 'Total';
-  tValue.innerHTML = total;
-  fRow.appendChild(tData);
-  fRow.appendChild(tValue);
-  target.appendChild(fRow);
-}
-
-
-//creating bill of table 3
-function openModal3(){
-  var target = document.getElementById('container3')
-  var total = 0;
-  while (target.firstChild) {
-          target.removeChild(target.firstChild);
-  }
-  if(Object.keys(table3).length > 0){
-    for (var i = 0; i < Object.keys(table3).length; i++) {
-      var key = Object.keys(table3)[i];
-      total += table3[key][0]*table3[key][1];
-      var row = document.createElement("tr");
-      var sNo = document.createElement("td");
-      var item = document.createElement("td");
-      var price = document.createElement("td");
-      var quant = document.createElement("td");
-      var input = document.createElement("input");
-      var del = document.createElement("td");
-      var delBtn = document.createElement("button");
-
-
-      sNo.className = "modalserial";
-      item.className = "modalItemName";
-      price.className = "modalPrice";
-      quant.className = "modalQuant";
-
-      input.setAttribute("type", "number");
-      input.setAttribute("min", 1);
-      input.setAttribute("onkeypress", "return event.charCode >= 48");
-      input.setAttribute("onchange", "editQuant(this, table3, 'table3', openModal3)");
-
-
-      delBtn.setAttribute("onclick", "deleteItem(this, table3, 'table3', openModal3)");
-      delBtn.className = "modalDelete";
-
-      delBtn.innerHTML = "del";
-
-      sNo.innerHTML = i + 1;
-      item.innerHTML = key;
-      price.innerHTML = table3[key][1];
-      input.value = table3[key][0];
-
-      quant.appendChild(input);
-      del.appendChild(delBtn);
-
-
-      row.appendChild(sNo);
-      row.appendChild(item);
-      row.appendChild(price);
-      row.appendChild(quant);
-      row.appendChild(del);
-      target.appendChild(row);
-    }
-  }
-  var fRow = document.createElement('tr');
-  var tData = document.createElement('th');
-  var tValue = document.createElement('td');
-  tData.colspan = 2;
-  tValue.colspan = 2;
-  tData.innerHTML = 'Total';
-  tValue.innerHTML = total;
-  fRow.appendChild(tData);
-  fRow.appendChild(tValue);
-  target.appendChild(fRow);
-}
-
-
-//creating bill of table 4
-function openModal4(){
-  var target = document.getElementById('container4');
-  var total = 0;
-  while (target.firstChild) {
-          target.removeChild(target.firstChild);
-  }
-  if(Object.keys(table4).length > 0){
-    for (var i = 0; i < Object.keys(table4).length; i++) {
-      var key = Object.keys(table4)[i];
-      total += table4[key][0]*table4[key][1];
-      var row = document.createElement("tr");
-      var sNo = document.createElement("td");
-      var item = document.createElement("td");
-      var price = document.createElement("td");
-      var quant = document.createElement("td");
-      var input = document.createElement("input");
-      var del = document.createElement("td");
-      var delBtn = document.createElement("button");
-
-
-      sNo.className = "modalserial";
-      item.className = "modalItemName";
-      price.className = "modalPrice";
-      quant.className = "modalQuant";
-
-      input.setAttribute("type", "number");
-      input.setAttribute("min", 1);
-      input.setAttribute("onkeypress", "return event.charCode >= 48");
-      input.setAttribute("onchange", "editQuant(this, table4, 'table4', openModal4)");
-
-
-      delBtn.setAttribute("onclick", "deleteItem(this, table4, 'table4', openModal4)");
-      delBtn.className = "modalDelete";
-
-      delBtn.innerHTML = "del";
-
-      sNo.innerHTML = i + 1;
-      item.innerHTML = key;
-      price.innerHTML = table4[key][1];
-      input.value = table4[key][0];
-
-      quant.appendChild(input);
-      del.appendChild(delBtn);
-
-
-      row.appendChild(sNo);
-      row.appendChild(item);
-      row.appendChild(price);
-      row.appendChild(quant);
-      row.appendChild(del);
-      target.appendChild(row);
-    }
-  }
-  var fRow = document.createElement('tr');
-  var tData = document.createElement('th');
-  var tValue = document.createElement('td');
-  tData.colspan = 2;
-  tValue.colspan = 2;
-  tData.innerHTML = 'Total';
-  tValue.innerHTML = total;
-  fRow.appendChild(tData);
-  fRow.appendChild(tValue);
-  target.appendChild(fRow);
-}
-
-//Closes the session of table 1
-function resetTable1(){
-  table1 = {};
-  var table = document.getElementById('table1');
-  var modal = document.getElementById('container1');
-  var total = modal.lastChild.lastChild.innerHTML;
-  while (modal.firstChild) {
-    modal.removeChild(modal.firstChild);
-  }
-  table.children[1].innerHTML = 0.00;
-  table.children[2].innerHTML = 0;
-  var modal1 = document.getElementById('id01');
-  modal1.style.display = "none";
-  alert("Table-1 bill amount is Rs " + total);
-}
-
-//Closes the session of table 2
-function resetTable2(){
-  table2 = {};
-  var modal = document.getElementById('container2');
-  var total = modal.lastChild.lastChild.innerHTML;
-  while (modal.firstChild) {
-    modal.removeChild(modal.firstChild);
-  }
-  var table = document.getElementById('table2');
-  table.children[1].innerHTML = 0.00;
-  table.children[2].innerHTML = 0;
-  var modal2 = document.getElementById('id02');
-  modal2.style.display = "none";
-  alert("Table-1 bill amount is Rs " + total);
-}
-
-//Closes the session of table 3
-function resetTable3(){
-  table3 = {};
-  var modal = document.getElementById('container3');
-  var total = modal.lastChild.lastChild.innerHTML;
-  while (modal.firstChild) {
-    modal.removeChild(modal.firstChild);
-  }
-  var table = document.getElementById('table3');
-  table.children[1].innerHTML = 0.00;
-  table.children[2].innerHTML = 0;
-  var modal3 = document.getElementById('id03');
-  modal3.style.display = "none";
-  alert("Table-1 bill amount is Rs " + total);
-}
-
-//Closes the session of table 4
-function resetTable4(){
-  table4 = {};
-  var modal = document.getElementById('container4');
-  var total = modal.lastChild.lastChild.innerHTML;
-  while (modal.firstChild) {
-    modal.removeChild(modal.firstChild);
-  }
-  var table = document.getElementById('table4');
-  table.children[1].innerHTML = 0.00;
-  table.children[2].innerHTML = 0;
-  var modal4 = document.getElementById('id04');
-  modal4.style.display = "none";
-  alert("Table-1 bill amount is Rs " + total);
+    var ctr = 0;
+    table.children[1].lastChild.innerHTML = ctr.toFixed(2);
+    table.children[2].firstChild.innerHTML = 0;
+    var modal1 = document.getElementById(modalId);
+    modal1.style.display = "none";
+    alert(str + " bill amount is Rs " + total);
 }
 
 
 //to edit quantity of certain item
 function editQuant(ev, table, tableId, fn){
-  key = ev.parentNode.parentNode.children[1].innerHTML;
-  if(Number(ev.value) === 0){
-    delete table[key];
-  }
-  else{
-    table[key][0] = Number(ev.value);
-  }
-  var ctr = document.getElementById(tableId);
-  var amount = 0;
-  var item = 0;
-  for(var i = 0; i < Object.keys(table).length; i++){
-    amount += table[Object.keys(table)[i]][0]*table[Object.keys(table)[i]][1];
-    item += table[Object.keys(table)[i]][0];
-  }
-  ctr.children[1].innerHTML = amount;
-  ctr.children[2].innerHTML = item;
-  fn();
+    key = ev.parentNode.parentNode.children[1].innerHTML;
+    if(Number(ev.value) === 0){
+        delete table[key];
+    }
+    else{
+        table[key][0] = Number(ev.value);
+    }
+    var ctr = document.getElementById(tableId);
+    var amount = 0;
+    var item = 0;
+    for(var i = 0; i < Object.keys(table).length; i++){
+        amount += table[Object.keys(table)[i]][0]*table[Object.keys(table)[i]][1];
+        item += table[Object.keys(table)[i]][0];
+    }
+    ctr.children[1].lastChild.innerHTML = amount;
+    ctr.children[2].firstChild.innerHTML = item;
+    fn();
 
 }
 
 //to delete certain item
 function deleteItem(ev, table, tableId, fn){
-  key = ev.parentNode.parentNode.children[1].innerHTML;
-  delete table[key];
-  fn();
-  var ctr = document.getElementById(tableId);
-  var amount = 0;
-  var item = 0;
-  for(var i = 0; i < Object.keys(table).length; i++){
-    amount += table[Object.keys(table)[i]][0]*table[Object.keys(table)[i]][1];
-    item += table[Object.keys(table)[i]][0];
-  }
-  ctr.children[1].innerHTML = amount;
-  ctr.children[2].innerHTML = item;
-  
+    key = ev.parentNode.parentNode.children[1].innerHTML;
+    delete table[key];
+    fn();
+    var ctr = document.getElementById(tableId);
+    var amount = 0;
+    var item = 0;
+    for(var i = 0; i < Object.keys(table).length; i++){
+        amount += table[Object.keys(table)[i]][0]*table[Object.keys(table)[i]][1];
+        item += table[Object.keys(table)[i]][0];
+    }
+    ctr.children[1].lastChild.innerHTML = amount;
+    ctr.children[2].firstChild.innerHTML = item;
+
 }
 
 
@@ -525,7 +305,7 @@ window.onclick = function(event) {
         event.target.style.display = "none";
         var ctr = event.target.getElementsByClassName('tbody')[0];
         while (ctr.firstChild) {
-          ctr.removeChild(ctr.firstChild);
+            ctr.removeChild(ctr.firstChild);
         }
     }
 } 

@@ -19,7 +19,8 @@ html,body
 	grid-column: 2 3;
 	overflow: scroll;
 	height: 100vh;
-
+    border-left: 1px solid black;
+    padding-left: 10px;
 }
 
 h4{
@@ -55,6 +56,14 @@ input[type="text"]{
 
 .food:hover, .table:hover {
 	box-shadow: 5px 5px 5px rgba(128,128,128, 0.5)
+}
+
+.table:hover{
+    background-color: yellow;
+}
+
+.table:target{
+    background-color: yellow;
 }
 
 [draggable=true] {
@@ -141,3 +150,6 @@ td{
     color: white;
 }
 
+.table{
+    padding-left: 2%;
+}
